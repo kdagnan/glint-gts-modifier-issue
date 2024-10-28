@@ -1,0 +1,29 @@
+{
+  "extends": "@tsconfig/ember/tsconfig.json",
+  "include": [
+    "src/**/*",
+    "types/**/*",
+    "../node_modules/ember-cli-flash/**/*.d.ts"
+  ],
+  "glint": {
+    "environment": [
+      "ember-loose",
+      "ember-template-imports"
+    ]
+  },
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "rootDir": "./src",
+    "strict": true,
+    // Needed but overridden by @tsconfig/ember
+    "noEmit": false,
+    "noEmitOnError": false,
+    "declarationDir": "declarations",
+    "emitDeclarationOnly": true,
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true,
+    "noPropertyAccessFromIndexSignature": false
+  }
+}

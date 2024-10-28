@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "blocks-components-monorepo",
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:fix": "npm run lint:fix --workspaces --if-present",
+    "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,yellow",
+    "start:addon": "npm start --workspace=addon",
+    "start:test-app": "npm start --workspace=test-app",
+    "pretest": "npm run build --workspace=addon",
+    "test": "concurrently 'npm:test:*' --prefix-colors cyan,yellow",
+    "test:addon": "npm test --workspace=addon",
+    "test:test-app": "npm test --workspace=test-app"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1"
+  },
+  "engines": {
+    "node": "16.*"
+  },
+  "workspaces": [
+    "addon"
+  ]
+}

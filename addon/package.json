@@ -1,0 +1,129 @@
+{
+  "name": "blocks-components",
+  "version": "1.10.0-SNAPSHOT.0",
+  "description": "Reusable components for Voyant applications.",
+  "keywords": [
+    "ember-addon"
+  ],
+  "repository": "https://bitbucket.org/planwithvoyant/blocks-components.git",
+  "license": "MIT",
+  "author": "",
+  "files": [
+    "addon-main.cjs",
+    "dist",
+    "translations",
+    "declarations"
+  ],
+  "scripts": {
+    "build": "concurrently 'npm:build:*'",
+    "build:js": "rollup --config",
+    "build:types": "glint --declaration",
+    "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
+    "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "glint",
+    "start": "concurrently 'npm:start:*'",
+    "start:js": "rollup --config --watch --no-watch.clearScreen",
+    "start:types": "glint --declaration --watch",
+    "test": "concurrently 'npm:lint:js' 'npm:lint:hbs' --names 'lint:js,lint:hbs'",
+    "prepack": "concurrently 'npm:lint:js' 'npm:lint:hbs' 'npm:build'"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "^1.8.7",
+    "decorator-transforms": "~1.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/plugin-transform-typescript": "^7.23.6",
+    "@babel/runtime": "^7.22.6",
+    "@embroider/addon-dev": "^4.2.1",
+    "@gavant/glint-template-types": "^0.3.3",
+    "@glimmer/component": "^1.1.2",
+    "@glimmer/tracking": "^1.1.2",
+    "@glint/core": "^1.5.0",
+    "@glint/environment-ember-loose": "^1.5.0",
+    "@glint/environment-ember-template-imports": "^1.5.0",
+    "@glint/template": "^1.5.0",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@tsconfig/ember": "^3.0.5",
+    "@types/ember": "^4.0.3",
+    "@types/ember__application": "^4.0.5",
+    "@types/ember__array": "^4.0.3",
+    "@types/ember__component": "^4.0.13",
+    "@types/ember__controller": "^4.0.4",
+    "@types/ember__destroyable": "^4.0.1",
+    "@types/ember__helper": "^4.0.7",
+    "@types/ember__modifier": "^4.0.9",
+    "@types/ember__object": "^4.0.5",
+    "@types/ember__routing": "^4.0.12",
+    "@types/ember__service": "^4.0.2",
+    "@types/ember__string": "^3.0.10",
+    "@types/ember__template": "^4.0.1",
+    "@types/ember__utils": "^4.0.2",
+    "@types/prop-types": "^15.7.11",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^6.20.0",
+    "babel-plugin-ember-template-compilation": "^2.2.1",
+    "concurrently": "^7.2.1",
+    "ember-eslint-parser": "^0.3.8",
+    "ember-modifier": "^4.1.0",
+    "ember-source": "^4.12",
+    "ember-template-imports": "^4.0.0",
+    "ember-template-lint": "^5.13.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-ember": "^12.0.2",
+    "eslint-plugin-n": "^16.0.1",
+    "execa": "^8.0.1",
+    "fix-bad-declaration-output": "^1.1.2",
+    "rollup": "^4.12.1",
+    "rollup-plugin-copy": "^3.4.0",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "ember-bootstrap": ">=5.0",
+    "ember-modifier": ">=3.*",
+    "ember-truth-helpers": ">=4.0"
+  },
+  "publishConfig": {
+    "cache": "~/.npm",
+    "registry": "https://nexus-internal.dev.planwithvoyant.cloud/repository/npm-private/"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "engines": {
+    "node": "16.*"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "app-js": {
+      "./components/broken-example.js": "./dist/_app_/components/broken-example.js"
+    }
+  },
+  "exports": {
+    "./addon-main.js": "./addon-main.cjs",
+    "./styles/*": {
+      "default": "./dist/styles/*.scss"
+    },
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./declarations/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "declarations/*"
+      ]
+    }
+  }
+}
